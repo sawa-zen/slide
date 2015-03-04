@@ -11,8 +11,8 @@ slidenumbers: true
     - グローバルスコープ / 静的スコープ / 動的スコープ
     関数スコープ
 - JavaScript におけるスコープのシミュレーション
-- クロージャによる抽象化について
-    - シャドウイング / 自由変数
+- クロージャ
+    - 自由変数 / クロージャのシミュレーション
 
 
 ---
@@ -481,7 +481,7 @@ globals;
 
 
 ---
-#クロージャの抽象化
+#クロージャ
 
 
 ---
@@ -489,10 +489,9 @@ globals;
 #クロージャとは?
 
 - 関数内で定義された値を後に使用できるように確保する関数
+例えばローカル変数
 
 ```javascript
-
-
 // 変数を確保するクロージャ
 function whatWasTheLocal() {
     var CAPTURED = 'あ、こんにちは。';
@@ -504,7 +503,6 @@ var reportLocal = whatWasTheLocal();
 
 reportLocal();
 // => 'ローカル変数: あ、こんにちは。'
-
 ```
 
 
@@ -512,9 +510,8 @@ reportLocal();
 - 引数として渡した値も同様に確保できる
 
 ```javascript
-
-function makeAdder(CAPTURED) {
-    return function(free) {
+function createScaleFunction(FACTOR) {
+    return function(v) {
         return _.map(v, function(n) {
             return (n * FACTOR);
         });
@@ -525,15 +522,179 @@ var scale10 = createScaleFunction(10);
 
 scale10([1,2,3]);
 // => [10, 20, 30]
+```
+__これらのクロージャによって確保される変数を自由変数と言う__
 
+---
+# クロージャを見てみて
+- 外の関数の実行後に寿命を終えるはずの変数が内側の関数によって守られているように見える
+
+
+
+
+---
+# クロージャを見てみて
+- 外の関数の実行後に寿命を終えるはずの変数が内側の関数によって守られているように見える
+    __=>なぜ？？？？？__
+
+
+---
+# クロージャを見てみて
+- 外の関数の実行後に寿命を終えるはずの変数が内側の関数によって守られているように見える
+	__=>this を使ってクロージャをシュミレートできる__
+
+
+---
+# クロージャのシミュレーション
+- 以下のコードで考えてみる
+
+```javascript
+function makeAdder(CAPTURED) {
+    return function(free) {
+        return free + CAPTURED;
+    };
+}
+
+var add10 = makeAdder(10);
+
+add10(20);
+// => 30
 ```
 
+---
+# クロージャのシミュレーション
+- まずは変数を this に置き換えてみる
+
+```javascript
+function makeAdder() {
+    this['CAPTURED'] = _.toArray(arguments)[0];
+    return function(free) {
+        return free + this['CAPTURED'];
+    };
+}
+
+var add10 = makeAdder.call({}, 10);
+
+add10(20);
+// => ??????
+```
+
+---
+# クロージャのシミュレーション
+- まずは変数を this に置き換えてみる
+
+```javascript
+function makeAdder() {
+    this['CAPTURED'] = _.toArray(arguments)[0];
+    return function(free) {
+        return free + this['CAPTURED'];
+    };
+}
+
+var add10 = makeAdder.call({}, 10);
+
+add10(20);
+// => NaN (゜o゜;!!!!!!!!!!!!?????????
+```
+
+---
+# なぜNaNになってしまうのか
+- 内側の関数のthisはグローバルを指してしまっているから
+
+``this['CAPTURED']`` が存在しないために ``undefiend`` になった
+
+```javascript
+20 + undefined;
+// => NaN
+```
+どうしよう...
+
+
+---
+# なぜNaNになってしまうのか
+- 内側の関数のthisはグローバルを指してしまっているから
+
+``this['CAPTURED']`` が存在しないために ``undefiend`` になった
+
+```javascript
+20 + undefined;
+// => NaN
+```
+どうしよう...
+__そうだ! ``bind`` で ``this`` を固定しよう！__
+
+
+---
+# クロージャのシミュレーション
+- ``bind`` を使って ``this`` を縛る
+
+```javascript
+function makeAdder() {
+    this['CAPTURED'] = _.toArray(arguments)[0];
+    return _.bind(function(free) {
+        return free + this['CAPTURED'];
+    }, this);
+}
+
+var add10 = makeAdder.call({}, 10);
+
+add10(20);
+// => 30   やったね!( (0) / (0)) ☆祝☆
+```
+
+---
+# おや？
+
+
+---
+```javascript
+function makeAdder() {
+    this['CAPTURED'] = _.toArray(arguments)[0];
+    return _.bind(function(free) {
+        return free + this['CAPTURED'];
+    }, this);
+}
+
+var add10 = makeAdder.call({}, 10);
+add10(20);  // => 30 
+add10(100); // => 110
+
+var add20 = makeAdder.call({}, 20);
+add20(20);  // => 40 
+add20(100); // => 120
+```
+<br/>
+
+---
+```javascript
+function makeAdder() {
+    this['CAPTURED'] = _.toArray(arguments)[0];
+    return _.bind(function(free) {
+        return free + this['CAPTURED'];
+    }, this);
+}
+
+var add10 = makeAdder.call({}, 10);
+add10(20);  // => 30 
+add10(100); // => 110
+
+var add20 = makeAdder.call({}, 20);
+add20(20);  // => 40 
+add20(100); // => 120
+```
+クロージャのシュミレートができてしまった...
+
+
+---
+# クロージャのシミュレーションの考察
+- ``bind`` を使用することでthisを縛ることができた
+	__=>同時に変数の確保を実現することができた__
 
 ---
 #まとめ
 
 - スコープの種類を学び仕組みを知る事でスコープ理解を深めた
-- クロージャに
+- クロージャ
 
 
 
