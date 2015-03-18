@@ -563,7 +563,7 @@ add10(20);
 
 ---
 # クロージャのシミュレーション
-- まずは変数を this に置き換えてみる
+- まずは変数を ``this`` に置き換えてみる
 
 ```javascript
 function makeAdder() {
@@ -694,12 +694,65 @@ add20(100); // => 120
 
 ---
 # 抽象としてのクロージャ
+- クロージャは変数を確保すると同時に抽象を提供してくれる
+__=> 自由変数は「設定情報」として考える事ができる__
+
+
+---
+# 例えば..
+- 以下の ``plucker`` 関数は obj の中の指定されたキーの値を返す
+
+```javascript
+function plucker(FIELD) {
+	return function(obj) {
+		return (obj && obj[FIELD]);
+	};
+}
+
+var bestNobel = {title: "Infinite Jest", author: "DFW"};
+
+var getTitle = plucker('title'); // 設定情報に'title'を設定
+
+getTitle(bestNobel); // => "Infinite Jest"
+```
+
+---
+- もちろん配列が渡されてもOK
+
+```javascript
+var books = [
+	{title: "Chthon"},
+	{stars: 5},
+	{title: "Botchan"}
+];
+
+// 設定情報に 2(3番目) を設定
+var third = plucker(2);
+
+third(books);
+// => {title: "Botchan"}
+```
+
+---
+# ``plucker`` 関数の考察
+- 設定情報に title を設定したことで、タイトルを返してくれる ``getTitle`` 関数が ``plucker`` によって生み出された
+- 設定情報に 2 を設定したことで、配列の3番目を返してくれる ``third`` 関数が ``plucker`` によって生み出された
+
+---
+# ``plucker`` 関数の考察
+- 設定情報に title を設定したことで、タイトルを返してくれる ``getTitle`` 関数が ``plucker`` によって生み出された
+- 設定情報に 2 を設定したことで、配列の3番目を返してくれる ``third`` 関数が ``plucker`` によって生み出された
+
+## __=>設定情報が確保された事で抽象が提供された__
+
 
 ---
 #まとめ
 
 - スコープの種類を学び仕組みを知る事でスコープ理解を深めた
-- クロージャ
+- クロージャの特性を知り、抽象を得るための使用方法を学んだ
+
+## __関数型プログラミングを考える上で<br/>重要且つ基礎となる部分を押さえる事ができた__
 
 
 
