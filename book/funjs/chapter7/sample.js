@@ -54,3 +54,21 @@ var rand = partial1(_.random, 1);
 console.info(rand(10));
 
 console.log(repeatedly(10, partial1(rand, 10)));
+
+console.info(_.take(repeatedly(100, partial1(rand, 10)), 5));
+
+
+
+function randString(len) {
+	var ascii = repeatedly(len, partial1(rand, 36));
+
+	return _.map(ascii, function(n) {
+		return n.toString(36);
+	}).join('');
+}
+
+console.info('===randString===');
+console.info(randString(0));
+console.info(randString(1));
+console.info(randString(10));
+
