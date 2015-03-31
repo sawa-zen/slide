@@ -22,7 +22,7 @@ function construct(head, tail) {
 	return cat([head], _.toArray(tail));
 }
 
-// P141 渡された関数の一個目の引数を固定
+// P141 渡された関数の一個目の引数を固定(部分適用)
 function partial1(fun, arg1) {
 	return function(/* arguments */) {
 		var args = construct(arg1, arguments);
@@ -31,7 +31,7 @@ function partial1(fun, arg1) {
 	};
 }
 
-// P102
+// P102 渡されたtimesの回数ぶんだけfunを実行する
 function repeatedly(times, fun) {
 	return _.map(_.range(times), fun);
 }
