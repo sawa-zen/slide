@@ -72,3 +72,9 @@ console.info(randString(0));
 console.info(randString(1));
 console.info(randString(10));
 
+
+
+////////////////
+
+console.info(Math.abs(42));
+
