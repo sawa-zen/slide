@@ -39,6 +39,7 @@ var rand = partial1(_.random, 1);
 
 // 指定された文字数分、ランダムな文字列を作成
 function randString(len) {
+	// 1〜36までの乱数をlenの数だけ配列にpush
 	var ascii = repeatedly(len, partial1(rand, 36));
 	return _.map(ascii, function(n) {
 		return n.toString(36);
@@ -46,7 +47,6 @@ function randString(len) {
 }
 
 randString(1); //=> "f"
-
 randString(10); //=> "k52k7bae8p"
 ```
 
@@ -73,6 +73,12 @@ describe("randString", function() {
 __=> ``???`` には何が適切だろうか？__
 
 [^1]: Jasmineの説明
+
+
+---
+# そもそもテストって何？
+
+
 
 ---
 # 関数における「純粋性」とは
