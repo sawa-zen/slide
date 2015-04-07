@@ -19,7 +19,66 @@ slidenumbers: true
 
 
 ---
-## 純粋性
+# 純粋性
+
+
+---
+# 純粋性？
+- 関数における純粋性って何？
+- 純粋な関数があるなら不純な関数もあるの？
+
+	__=> ``randString`` 関数を例に説明していく__
+
+
+---
+# 例) ``randString`` 関数
+
+```JavaScript
+// _.randomの第一引数を部分適用
+var rand = partial1(_.random, 1);
+
+// 指定された文字数分、ランダムな文字列を作成
+function randString(len) {
+	var ascii = repeatedly(len, partial1(rand, 36));
+	return _.map(ascii, function(n) {
+		return n.toString(36);
+	}).join('');
+}
+
+randString(1); //=> "f"
+
+randString(10); //=> "k52k7bae8p"
+```
+
+---
+# ``randString`` 関数を見てみて
+- 関数合成が行われ高いレベルの機能が実現できた
+- これまでの関数合成同様に良い例に見える
+
+	__=> では、あなたはこの関数をどうテストしますか？__
+
+
+---
+# テストを考えてみる
+- ``randString`` 関数を Jasmine[^1] を使用してテストしてみよう
+
+```JavaScript
+describe("randString", function() {
+	it("小文字のASCII文字もしくは数字の文字列を生成", function() {
+		expect(randString()).to???(???);
+	});
+});
+```
+
+__=> ``???`` には何が適切だろうか？__
+
+[^1]: Jasmineの説明
+
+---
+# 関数における「純粋性」とは
+- 結果は引数として与えられた値からのみ計算される
+- 関数外部で変更される可能性のあるデータに一切依存しない
+- 関数実行部の外側に存在する何かの状態を一切変更しない
 
 ---
 #バインディングとは?
@@ -148,8 +207,6 @@ globalThis();
 globalThis.call('banana');
 // => 'banana'
 ```
-
-[^1]: [すぐに忘れる脳みそのためのメモ: レキシカルスコープとダイナミックスコープ](http://jutememo.blogspot.jp/2012/03/blog-post.html) 参照
 
 ---
 #動的スコープが使われそうな例
