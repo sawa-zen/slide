@@ -1,4 +1,4 @@
-footer: ![8%](./images/topotal.png) 【学生向け】もう一歩向上させるWebデザイン 2016/04/17 - Takayoshi Sawada ( @sawada_tkys )
+footer:【学生向け】もう一歩向上させるWebデザイン 2016/04/17 - Takayoshi Sawada ( @sawada_tkys ) / Topotal.com ( @topotal )
 slidenumbers: true
 autoscale: true
 
