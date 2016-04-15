@@ -1,3 +1,7 @@
+footer: ![8%](./images/topotal.png) 【学生向け】もう一歩向上させるWebデザイン 2016/04/17 - Takayoshi Sawada ( @sawada_tkys )
+slidenumbers: true
+autoscale: true
+
 # 🎂 誕生日駆動開発のすゝめ 🎂
 
 ### __Takayoshi Sawada__<br/>@sawada_tkys<br/>sawa-zen.com
@@ -10,17 +14,24 @@
 
 ## __モチベーション保ててますか？__
 
-![悩む](./worry.jpg)
+![悩む](./images/worry.jpg)
 
 ---
 
 # 学生あるある
 
 - インプットに時間をかけすぎてアウトプットできてない。
-- まるで役に立たないサンプルしか作らない。
 - やる気はあるがアイデアがない。
 - だらだらと製作が続いて完成しない。
 - こだわりすぎて完成しない。
+
+---
+
+# なぜモチベーションが続かないのか。
+
+- 報酬が無い
+- 明確な期限が無い
+- 目的が無い
 
 ---
 
