@@ -88,7 +88,7 @@ aGlobalVariable = 'Livin la vida global';
 (function () {
     // どこからでも書換えが可能!!
     aGlobalVariable = 'hoge!';
-    return; 
+    return;
 })();
 aGlobalVariable;
 //=> 'hoge!'
@@ -229,13 +229,13 @@ target.act.call('wat');
 
 ```javascript
 var myname = "global";
- 
+
 function func() {
     console.log(myname);    //出力内容は？
     var myname = "local";
     console.log(myname);    //出力内容は？
 }
- 
+
 func();
 ```
 
@@ -246,13 +246,13 @@ __[解答]__
 
 ```javascript
 var myname = "global";
- 
+
 function func() {
     console.log(myname);    // => undefiend
     var myname = "local";
     console.log(myname);    // => 'local'
 }
- 
+
 func();
 ```
 
@@ -263,13 +263,13 @@ __[解答]__
 
 ```javascript
 var myname = "global";
- 
+
 function func() {
-    console.log(myname);    // => undefiend??????????
+    console.log(myname);    // => undefiend(globalじゃないの???)
     var myname = "local";
     console.log(myname);    // => 'local'
 }
- 
+
 func();
 ```
 
@@ -284,6 +284,26 @@ func();
 
 
 ---
+
+# 巻き上げた結果
+
+先程のコードの「変数の巻き上げ」が起こった結果以下のコードになるため `undefiend` になる。
+
+```javascript
+var myname = "global";
+
+function func() {
+    var myname; // ←mynameの宣言がfuncの先頭に移動
+    console.log(myname);    // => undefiend
+    myname = 'local';
+    console.log(myname);    // => 'local'
+}
+
+func();
+```
+
+---
+
 ##JavaScript における<br/>スコープのシミュレーション
 
 
@@ -379,7 +399,7 @@ function strangeIdentity(n) {
     for(var i=0; i<n; i++);
     return i;
 }
- 
+
 strangeIdentity(108);
 // => 108
 
@@ -395,7 +415,7 @@ function strangeIdentity(n) {
     for(this['i']=0; this['i']<n; this['i']++);
     return this['i'];
 }
- 
+
 strangeIdentity(108);
 // => 108
 
@@ -412,7 +432,7 @@ function strangeIdentity(n) {
     for(this['i']=0; this['i']<n; this['i']++);
     return this['i'];
 }
- 
+
 strangeIdentity(108); // => 108
 
 i; // => 108   Σq|ﾟДﾟ|p ﾜｵｫ
@@ -429,7 +449,7 @@ strangeIdentity.call({}, 10000);
 // => 10000
 
 i;
-// => 108   
+// => 108
 // やったね!( (0) / (0)) ☆祝☆
 
 ```
@@ -447,7 +467,7 @@ __=> 前の 108 は残ったがこれ以上の書換えを防ぐことができ�
 - 新たにテーブルを関数に渡す事でローカル変数の再現ができた
 - 関数内の変数にしかアクセス出来ない
     __=> まだ擬似スコープを実装できたとは言えない__
-   
+
 
 ---
 #ではどうするか?
@@ -496,7 +516,7 @@ globals;
 function whatWasTheLocal() {
     var CAPTURED = 'あ、こんにちは。';
     return function() {
-        return 'ローカル変数: ' + CAPTURED; 
+        return 'ローカル変数: ' + CAPTURED;
     };
 }
 var reportLocal = whatWasTheLocal();
@@ -656,11 +676,11 @@ function makeAdder() {
 }
 
 var add10 = makeAdder.call({}, 10);
-add10(20);  // => 30 
+add10(20);  // => 30
 add10(100); // => 110
 
 var add20 = makeAdder.call({}, 20);
-add20(20);  // => 40 
+add20(20);  // => 40
 add20(100); // => 120
 ```
 <br/>
@@ -675,11 +695,11 @@ function makeAdder() {
 }
 
 var add10 = makeAdder.call({}, 10);
-add10(20);  // => 30 
+add10(20);  // => 30
 add10(100); // => 110
 
 var add20 = makeAdder.call({}, 20);
-add20(20);  // => 40 
+add20(20);  // => 40
 add20(100); // => 120
 ```
 クロージャのシミュレートができてしまった...!!!
