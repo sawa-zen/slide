@@ -2,16 +2,18 @@ footer: @sawa-zen (2018/4/22) Roppongi.js
 
 ![fit](background.png)
 
-# React Sketch.appで<br>デザインガイドラインを<br>作ってみた
+# **React Sketch.appで<br>デザインガイドラインを<br>作ってみた**
+
+#### 株式会社メルペイ フロントエンドエンジニア<br>@sawa-zen
 
 ---
 
 ![fit](background.png)
 
-# @sawa-zen
+# [fit] @sawa-zen
 
 所属：株式会社メルペイ
-役職：フロントエンドエンジニア/インタラクションデザイナー
+職種：フロントエンドエンジニア/インタラクションデザイナー
 
 Three.js
 React
