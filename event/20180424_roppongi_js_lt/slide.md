@@ -1,9 +1,8 @@
 footer: @sawa-zen (2018/4/22) Roppongi.js
-slidenumbers: true
 
 ![fit](background.png)
 
-# React Sketch.appで<br>デザインガイドラインを作ってみた
+# React Sketch.appで<br>デザインガイドラインを<br>作ってみた
 
 ---
 
@@ -130,7 +129,9 @@ export default function(context) {
 
 ---
 
-# ① スタイルがコードとして共有できる :ok_woman:
+![fit](background.png)
+
+## ① スタイルがコードとして共有できる :ok_woman:
 
 nodeモジュールとして共有すればスタイルをコードして扱える
 
@@ -143,7 +144,7 @@ nodeモジュールとして共有すればスタイルをコードして扱え�
 
 ![fit](background.png)
 
-# ② プラグインとして共有できる :ok_woman:
+## ② プラグインとして共有できる :ok_woman:
 
 プラグインを実行するだけで以下２つがセットで生成できるため、プロジェクトを跨いだデザインの統一化を図りやすい。
 
@@ -154,7 +155,7 @@ nodeモジュールとして共有すればスタイルをコードして扱え�
 
 ![fit](background.png)
 
-# ③ 単純作業が多いので向いている :ok_woman:
+## ③ 作りやすい :ok_woman:
 
 繰り返しViewを並べる作業が多いのでコードで表現する方が速い
 
@@ -164,7 +165,7 @@ nodeモジュールとして共有すればスタイルをコードして扱え�
 
 ![fit](background.png)
 
-# ④ 無駄なシンボルが残らない :ok_woman:
+## ④ 無駄なシンボルが残らない :ok_woman:
 
 効率化の為に作成していたシンボルがコードに置換できる
 
@@ -197,7 +198,7 @@ nodeモジュールとして共有すればスタイルをコードして扱え�
 
 ![fit](background.png)
 
-# 実業務に導入するためには？
+## 実業務に導入するためには？
 
 ---
 
@@ -209,7 +210,7 @@ nodeモジュールとして共有すればスタイルをコードして扱え�
 
 ![fit](background.png)
 
-# ~~Site Reliability Engineering（SRE）~~
+## ~~Site Reliability Engineering（SRE）~~
 
 # ↓
 
