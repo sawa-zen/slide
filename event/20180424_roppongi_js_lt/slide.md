@@ -112,10 +112,11 @@ export default function(context) {
 
 ---
 
-
 ![original fit](style_guide.png)
 
 ---
+
+![fit](background.png)
 
 ![inline fit](style_guide.png)
 
@@ -171,21 +172,51 @@ nodeモジュールとして共有すればスタイルをコードして扱え�
 
 ---
 
+![fit](background.png)
+
 # 課題
 
 - コンポーネントの細かなデザインからはエンジニアでは難しい
-- デザイナーと密なコミュニケーションが必須
+- デザイナーさんと密なコミュニケーションが必須
 - 結局JSをデザイナーさんも触る可能性がある
-
-
----
-
-#
+- そもそも作ってる余裕が無い事が多い
 
 ---
 
-# まとめ
+![fit](background.png)
 
-- コードで全てデザインを作るのは辛い
-- デザインガイドラインレベルであればエンジニアでも作れそう
-- React Sketch.appで作ると共有がし易い
+# でも手応えはあった :+1:
+
+---
+
+![fit](background.png)
+
+# もっとプロダクトのUIを<br>良くしていきたい！
+
+---
+
+![fit](background.png)
+
+# 実業務に導入するためには？
+
+---
+
+![fit](background.png)
+
+# [fit] **UIの信頼性向上を担う<br>新部署の爆誕しかない！**
+
+---
+
+![fit](background.png)
+
+# ~~Site Reliability Engineering（SRE）~~
+
+# ↓
+
+# [fit] **UI Reliability Engineering<br>（URE）**
+
+---
+
+![fit](background.png)
+
+# [fit] **弊社に新部署設立検討<br>お願いします！**<br> :bow: :bow:
