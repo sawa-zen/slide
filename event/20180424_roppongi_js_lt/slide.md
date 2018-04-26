@@ -223,3 +223,12 @@ nodeモジュールとして共有すればスタイルをコードして扱え�
 ![fit](background.png)
 
 # [fit] **弊社に新部署設立検討<br>お願いします！**<br> :bow: :bow:
+
+---
+
+## メルペイでは #z-youtuber に<br>入りたい方募集してます
+
+---
+
+# サンプルガイドラインのGithubリポジトリ
+[https://github.com/sawa-zen/style-guide](https://github.com/sawa-zen/style-guide)
