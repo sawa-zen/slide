@@ -4,7 +4,7 @@ footer: @sawa-zen (2018/6/22) react-native-meetup
 
 ## **デザインガイドラインを作る<br>Webサービスを作っている話**
 
-#### Merpay.Inc フロントエンドエンジニア<br>@sawa-zen
+#### Merpay, Inc フロントエンドエンジニア<br>@sawa-zen
 
 ---
 
@@ -12,7 +12,7 @@ footer: @sawa-zen (2018/6/22) react-native-meetup
 
 # [fit] @sawa-zen
 
-所属：Merpay.Inc
+所属：Merpay, Inc
 職種：フロントエンドエンジニア/インタラクションデザイナー
 
 Three.js
