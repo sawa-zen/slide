@@ -195,6 +195,6 @@ YouTuber大好き
 - font-famiryパターン
 - marginパターン
 - border-radiusパターン
-- jsonのimport機能
+- jsonのexport/import機能
 
 
